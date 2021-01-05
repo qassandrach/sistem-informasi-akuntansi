@@ -1,6 +1,6 @@
 <?php
 include '../config/configuration.php';
-
+// include './content_laporan/labarugi.php';
 $nama_transaksi       	= $_POST['nama_transaksi'];
 $nominal      			= $_POST['nominal'];
 $nama_akun_debit       	= $_POST['debet'];
@@ -45,7 +45,23 @@ while ($data_akun_kredit = mysqli_fetch_assoc($sql_akun_kredit)){
     }
     
 }
-
+// update SHU
+$pendapatan_total = 0;	
+$sql_pendapatan = mysqli_query($conn,"SELECT * FROM `tb_coa` WHERE kode_akun LIKE '4%' AND NOT saldo=0");
+while($data=mysqli_fetch_assoc($sql_pendapatan)) {
+	$pendapatan_total += $data['saldo'];
+}
+$biaya_total = 0;	
+$sql_biaya = mysqli_query($conn,"SELECT * FROM `tb_coa` WHERE kode_akun LIKE '5%' AND NOT saldo=0");
+while($data=mysqli_fetch_assoc($sql_biaya)) {
+	$biaya_total=$biaya_total+$data['saldo'];
+}
+$laba = 0;	
+$sql_laba = mysqli_query($conn,"SELECT * FROM `tb_coa`");
+while($data=mysqli_fetch_assoc($sql_laba)) {
+	$laba=$pendapatan_total-$biaya_total;
+}
+$sql_update_shu = mysqli_query($conn, "UPDATE tb_coa SET saldo = $laba WHERE nama = 'SHU'");
 if($conn->query($sql) === false) {
     trigger_error('Perintah SQL Salah: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
 } else {

@@ -21,6 +21,8 @@
                </tr>
 			   <?php
     include '../config/configuration.php';
+    // include './content_laporan/labarugi.php';
+    // echo var_dump($laba);
     $product = mysqli_query($conn, "SELECT * from transaksi");
     foreach ($product as $result){
 		echo "<tr>

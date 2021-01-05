@@ -81,6 +81,7 @@
 	while($data=mysqli_fetch_assoc($sql)) {
 	$laba=$harga_total-$jml;
 	}
+	
 	?>
 		<tr>
 		<td style="font-size: 17px; text-align: left; "><?php echo " Rp." . number_format($laba).",-"; ?></td>

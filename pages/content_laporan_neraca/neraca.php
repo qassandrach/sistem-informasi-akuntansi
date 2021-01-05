@@ -25,9 +25,19 @@
          <tr>
 				<th  colspan="2" class="info">Aset Tetap</th>
                </tr>
+			   <?php
+    include '../config/configuration.php';
+    $product = mysqli_query($conn, "SELECT * FROM `tb_coa` WHERE kode_akun LIKE '11%' AND NOT saldo=0");
+    foreach ($product as $result){
+		echo "<tr>
+				<td>".$result['nama']."</td>
+				<td>RP. ".number_format($result['saldo'])."</td> 
+				</tr>";
+	}
+		?>
 	<?php
 	$harga_total = 0;	
-	$sql = mysqli_query($conn,"SELECT * FROM `tb_coa` WHERE kode_akun LIKE '10%' AND NOT saldo=0");
+	$sql = mysqli_query($conn,"SELECT * FROM `tb_coa` WHERE kode_akun LIKE '1%' AND NOT saldo=0");
 	while($data=mysqli_fetch_assoc($sql)) {
 	$harga_total += $data['saldo'];
 	}
@@ -48,7 +58,6 @@
     $product = mysqli_query($conn, "SELECT * FROM `tb_coa` WHERE kode_akun LIKE '2%' AND NOT saldo=0");
     foreach ($product as $result){
 		echo "<tr>
-				<td>".$result['kode_akun']."</td>
 				<td>".$result['nama']."</td>
 				<td>RP. ".number_format($result['saldo'])."</td> 
 				</tr>";
