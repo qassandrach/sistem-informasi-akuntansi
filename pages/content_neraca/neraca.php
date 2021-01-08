@@ -18,7 +18,7 @@
 	
 			   <?php
     include '../config/configuration.php';
-    $product = mysqli_query($conn, "SELECT kode_akun, nama, CASE WHEN gol='Debet' THEN saldo END AS debit, CASE WHEN gol='Kredit' THEN saldo END AS kredit FROM `tb_coa`");
+    $product = mysqli_query($conn, "SELECT kode_akun, nama, CASE WHEN gol='Debet' THEN saldo END AS debit, CASE WHEN gol='Kredit' THEN saldo END AS kredit FROM `tb_coa` WHERE NOT nama='SHU'");
     foreach ($product as $result){
 		echo "<tr>
 				<td>".$result['kode_akun']."</td>
@@ -32,7 +32,7 @@
     	<?php
   $total_debit = 0;	
   $total_kredit = 0;
-	$sql = mysqli_query($conn,"SELECT CASE WHEN gol='Debet' THEN saldo END AS debit, CASE WHEN gol='Kredit' THEN saldo END AS kredit FROM `tb_coa`");
+	$sql = mysqli_query($conn,"SELECT CASE WHEN gol='Debet' THEN saldo END AS debit, CASE WHEN gol='Kredit' THEN saldo END AS kredit FROM `tb_coa` WHERE NOT nama='SHU'");
 	while($data=mysqli_fetch_assoc($sql)) {
   $total_debit += $data['debit'];
   $total_kredit += $data['kredit'];

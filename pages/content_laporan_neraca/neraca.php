@@ -27,7 +27,7 @@
                </tr>
 			   <?php
     include '../config/configuration.php';
-    $product = mysqli_query($conn, "SELECT * FROM `tb_coa` WHERE kode_akun LIKE '11%' AND NOT saldo=0");
+    $product = mysqli_query($conn, "SELECT * FROM `tb_coa` WHERE kode_akun LIKE '12%' AND NOT saldo=0");
     foreach ($product as $result){
 		echo "<tr>
 				<td>".$result['nama']."</td>
@@ -55,7 +55,7 @@
                </tr>
 			   <?php
     include '../config/configuration.php';
-    $product = mysqli_query($conn, "SELECT * FROM `tb_coa` WHERE kode_akun LIKE '2%' AND NOT saldo=0");
+    $product = mysqli_query($conn, "SELECT * FROM `tb_coa` WHERE klas='Liabilitas' AND NOT saldo=0");
     foreach ($product as $result){
 		echo "<tr>
 				<td>".$result['nama']."</td>
@@ -68,7 +68,7 @@
                </tr>
                <?php
     include '../config/configuration.php';
-    $product = mysqli_query($conn, "SELECT * FROM `tb_coa` WHERE kode_akun LIKE '3%' AND NOT saldo=0");
+    $product = mysqli_query($conn, "SELECT * FROM `tb_coa` WHERE klas='Ekuitas' AND NOT saldo=0");
     foreach ($product as $result){
 		echo "<tr>
 				<td>".$result['nama']."</td>

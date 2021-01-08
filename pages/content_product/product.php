@@ -5,21 +5,29 @@
 
   </ol>
 </nav>
- <div class="col-md-10" style="min-height:600px">
-         <div class="col-md-12" style="padding:10px; padding-left:0;padding-right:0;">
+<div class="col-12">
+<div class="col-md-12" style="padding:10px; padding-left:0;padding-right:0;">
             <a href="?content=product_tambah" class="btn btn-info">Tambah</a>
          </div>
-            <table class="table table-bordered">
-               <tr>
-				<th class="info">Nomor Transaksi</th>
+                        <div class="card">
+                            <div class="card-body">
+                               <center> <h4 class="card-title" style="font-size:160%;font-weight: bold">Transaksi</h4></center>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class="thead-light">
+                                        <tr>
+                                        <th class="info">Nomor Transaksi</th>
 				<th class="info">Tanggal Transaksi</th>
 				  <th class="info">Nama Transaksi</th>
                   <th class="info">Nomor Akun Debit</th>
 				  <th class="info">Nomor Akun Kredit</th>
 				   <th class="info">Nominal (Rp.)</th>
                   <th class="info" colspan="2">Action</th>
-               </tr>
-			   <?php
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
     include '../config/configuration.php';
     // include './content_laporan/labarugi.php';
     // echo var_dump($laba);
@@ -41,9 +49,12 @@
 		
 		?>
 
-
-            </table>
-            <div class="col-md-12">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
                <nav align="center">
                  <ul class="pagination">
                    <li>

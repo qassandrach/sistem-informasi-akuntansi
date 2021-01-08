@@ -43,9 +43,9 @@
 					<?php
 					include '../config/configuration.php';
 					$akundebit = mysqli_query($conn, "SELECT * from tb_coa");
-					foreach ($akundebit as $result){
+					while ($data_akun = mysqli_fetch_assoc($akundebit)){
 					?>
-					<option value="<?php echo $result['nama'];?>"><?php echo $result['nama']; ?></option>
+					<option value="<?= $data_akun['nama'];?>"><?= $data_akun['nama']; ?></option>
 					<?php } ?>
 					</select>
 			</div>
@@ -55,11 +55,13 @@
 					<?php
 					include '../config/configuration.php';
 					$akundebit = mysqli_query($conn, "SELECT * from tb_coa");
-					foreach ($akundebit as $result){
+					while ($data_akun = mysqli_fetch_assoc($akundebit)){
 					?>
-					<option value="<?php echo $result['nama'];?>"><?php echo $result['nama']; ?></option>
-					<?php } ?>
+					<option value="<?= $data_akun['nama'];?>"><?= $data_akun['nama']; ?></option>
+					<?php } 
+					?>
 					</select>
+					
 			</div>
 			
 			 <input type="hidden" name="date" value="<?php echo date("d-m-Y"); ?>">
